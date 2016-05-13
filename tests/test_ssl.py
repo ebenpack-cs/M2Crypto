@@ -961,7 +961,7 @@ class TwistedSSLClientTestCase(BaseSSLClientTestCase):
             reactor.run()
         finally:
             self.stop_server(pid)
-        self.assertIn('s_server -quiet -www', twisted_data)
+        self.assertIn(b's_server -quiet -www', twisted_data)
 
 
 twisted_data = ''
