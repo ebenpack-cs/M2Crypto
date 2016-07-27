@@ -8,7 +8,6 @@ FIXME: it is questionable whether we need this old-style module at all. urllib
 
 Copyright (c) 1999-2003 Ng Pheng Siong. All rights reserved."""
 
-import base64
 import warnings
 
 from M2Crypto import SSL, httpslib, six, util
