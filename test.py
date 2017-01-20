@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import logging
 import os
-
+import sys
 from M2Crypto.BIO import openfile
 
-logging.basicConfig(format='%(levelname)s:%(funcName)s:%(message)s',
-                    level=logging.DEBUG)
-
 f = openfile('/tmp/test.txt', 'w')
-logging.debug('f = %s', f)
 ret = f.write('Zemské desky')
-logging.debug('ret = %s', ret)
-logging.debug('f.pyfile = dir %s', dir(f.pyfile))
 f.close()
-logging.debug('f = %s', f)
-size = os.stat('/tmp/test.txt')
-logging.debug('size = %d', size.st_size)
+size = os.path.getsize('/tmp/test.txt')
+if size == 0:
+    sys.exit(1)
