@@ -57,11 +57,21 @@ if six.PY2:
 else:
     def py3bytes(x):
         # type: (AnyStr) -> bytes
-        return x if isinstance(x, bytes) else x is not None and bytes(x, encoding="utf8") or x
+        if isinstance(x, str):
+            return bytes(x, encoding='utf8')
+        elif isinstance(x, bytes):
+            return x
+        else:
+            raise TypeError('No string argument provided')
 
     def py3str(x):
         # type: (AnyStr) -> str
-        return x if isinstance(x, str) else x is not None and x.decode("utf8") or x
+        if isinstance(x, bytes):
+            return x.decode('utf8')
+        elif isinstance(x, str):
+            return x
+        else:
+            raise TypeError('No string argument provided')
 
 
 def bin_to_hex(b):
